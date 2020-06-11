@@ -1,9 +1,10 @@
 from flask import render_template,redirect,url_for,abort,flash,request
 from . import main
 from flask_login import login_required
-from app.models import Comment,Pitch
-from .forms import UploadPitch,CommentsForm
+from app.models import Comment,Pitch, User
+from .forms import UploadPitch,CommentsForm,UpdateBio
 from flask import current_app
+from .. import db,photos
 
 
 @main.route('/')

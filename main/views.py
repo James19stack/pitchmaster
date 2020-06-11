@@ -1,8 +1,8 @@
 from flask import render_template,redirect,url_for,abort,flash,request
 from . import main
-
-from ..models import Comment,Pitch
-from .forms import UploadPitch,CommentsForm,
+from flask_login import login_required
+from app.models import Comment,Pitch
+from .forms import UploadPitch,CommentsForm
 from flask import current_app
 
 

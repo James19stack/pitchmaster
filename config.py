@@ -15,8 +15,8 @@ class Config():
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True
 class ProdConfig(Config):
-
-    pass
+    SQLALCHEMY_DATABASE_URI = os.environ.get("HEROKU_POSTGRESQL_GREEN_URL")
+    
 class TestConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://jefferson:Jefferson_22@localhost/pitch_test'
 class DevConfig(Config):

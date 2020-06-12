@@ -1,10 +1,15 @@
+import functools
+import os
+import secrets
+from PIL import Image
 from flask import render_template,redirect,url_for,abort,flash,request
 from . import main
-from flask_login import login_required
+from flask_login import login_required,current_user
 from app.models import Comment,Pitch, User
 from .forms import UploadPitch,CommentsForm,UpdateBio
 from flask import current_app
-from .. import db,photos
+from app import db
+
 
 
 @main.route('/')
@@ -31,7 +36,7 @@ def save_picture(form_data):
 @main.route('/user/<string:uname>',methods=['GET','POST'])
 @login_required
 def profile(uname):
-    image=url_for('static',filename='profile/'+ current_user.profile_pic_path)
+    image=url_for('static',filename='profile/'+ 'current_user.profile_pic_path')
     user=User.query.filter_by(username=uname).first()
     pitch=Pitch.query.filter_by(user_id=current_user.id).all()
     bio=UpdateBio()
@@ -61,13 +66,13 @@ def upload_pitch():
         db.session.commit()
         flash('Pitch Uploaded')
         return redirect(url_for('main.index'))
-    return render_template('templates/update_pitch.html',pitch=pitch,title='Create Pitch',legend='Create Pitch')
+    return render_template('profile/update_pitch.html',pitch=pitch,title='Create Pitch',legend='Create Pitch')
 
 @main.route('/<int:pname>/comment',methods=['GET','POST'])
 @login_required
 def comment(pname):
     comments=CommentsForm()
-    image=url_for('static',filename='profile/'+ current_user.profile_pic_path)
+    image=url_for('static',filename= 'profile/' + 'current_user.profile_pic_path')
     pitch=Pitch.query.filter_by(id=pname).first()
     comment_query=Comment.query.filter_by(pitch_id=pitch.id).all()
     

@@ -3,7 +3,7 @@ Developer: Mirara James Maina
 
 Email: jeffersondev29@gmail.com
 
-To see the application run this site by clicking here:()
+To see the application run this site by clicking here:( https://pitchidea.herokuapp.com)
 
 ## Description
 In life, you only have 60 seconds to impress someone. 1 minute can make or break you. How do we make sure that you use your 1 minute to actually say something meaningful?

@@ -10,7 +10,7 @@ from flask_mail import Mail
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
-photos = UploadSet('photos',IMAGES)
+profile = UploadSet('photos',IMAGES)
 
 bootstrap = Bootstrap()
 db = SQLAlchemy()
@@ -24,7 +24,7 @@ def create_app(config_name):
     app.config.from_object(config_options[config_name])
 
     # configure UploadSet
-    configure_uploads(app,photos)
+    configure_uploads(app,profile)
 
     # Initializing flask extensions
     bootstrap.init_app(app)

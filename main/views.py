@@ -8,7 +8,7 @@ from flask_login import login_required,current_user
 from app.models import Comment,Pitch, User
 from .forms import UploadPitch,CommentsForm,UpdateBio
 from flask import current_app
-from app import db
+from app import db,profile
 
 
 
